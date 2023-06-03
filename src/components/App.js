@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+// import Loader from './Loader'
 import '../styles/App.css';
 
 
@@ -10,10 +11,12 @@ const getData = async () =>{
 const Loader = () => <div id="loader">Loading...</div>
 const App = () => {
   const [todos,setTodos] = useState([])
+  const [loading,setLoading]=useState(true)
 
   useEffect(()=>{
     getData().then(data=> {
       setTodos(data)
+      setLoading(false)
      })
   },[])
   return (
